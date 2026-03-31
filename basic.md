@@ -121,3 +121,23 @@ This does **not** define a new animation. It simply instructs minecraft to bind 
 * Bones/Limbs cannot be added, only removed
 
 ---
+
+## Pointers
+- These are the main/primary animations used to move the skin around to get a desired shape/effect 
+
+| Animation              | What It Does                              |
+| -------------------- | ------------------------------------------ |
+| `animation.witch.general` | Stops any/all orignal animations|
+| `animation.evoker.general`   | Removes arms/torso area |
+| `animation.parrot.sitting`    | Moves torso area down by roughly 2 pixels |
+| `animation.axolotl.idle_floor_underwater`       | Moves torso area up by roughly 2 pixels |
+| `animation.fireworks_rocket.move`    | Scales the players torso area to about 0.6, causes the torso to move with the players head |
+| `animation.arrow.move`   | Same thing as the fireworks animations, but the head gets stretched |
+| `animation.humanoid.big_headv1.0`   | Scales both the head and outler skin layers to two different sizes |
+| `animation.enderman.scary_face`   | Moves the head higher than the outer skin layer, causing weird movement |
+| `animation.tripod_camera.neutral`  | Moves the torso area to the floor  |
+| `animation.elytra.default`      | Scales the torso area up by 1 pixel  |
+| `animation.player.base_pose.upside_down`     | Makes the torso area of the skin upside-down  |
+| `animation.strider.look_at_target.default`   | Fixes issues with 'animation.enderman.scary_face', 'animation.fireworks_rocket.move' and 'animation.arrow.move'  |
+| `animation.goat.look_at_target` | Limits the players head movement slightly |
+
