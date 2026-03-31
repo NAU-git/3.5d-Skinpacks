@@ -117,13 +117,15 @@ This does **not** define a new animation. It simply instructs minecraft to bind 
 
 ## Other key Points
 
-* Player animation behavior cannot be altered unless you use custom animations via a texture pack
+* Custom animations do not render unless you are using a resource pack in addition with the skinpack, however this is only clientsided to those who have the resource pack enabled
 * Bones/Limbs cannot be added, only removed
+* Some animations work differently when targeted to a different channel
+* Channels 'cape' and 'look_at_target_ui' are primarily UI based, 'cape' can have effects in game however its way more useful to use this channel to make your skin look less buggy in the user's interface
 
 ---
 
 ## Pointers
-- These are the main/primary animations used to move the skin around to get a desired shape/effect 
+These are the main/primary animations used to move the skin around to get a desired shape/effect 
 
 | Animation              | What It Does                              |
 | -------------------- | ------------------------------------------ |
