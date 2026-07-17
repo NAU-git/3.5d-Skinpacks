@@ -1,5 +1,5 @@
 # Minecraft Bedrock Player Animation Reference
-## Vanilla Resource Pack v26.0.0 Analysis
+## Vanilla Resource Pack v26.0.0 - Complete Re-Scan
 
 ---
 
@@ -49,158 +49,132 @@ root
 
 ---
 
-## Animation Files Overview
+## Scan Statistics
 
-| File | Animations | Purpose |
-|------|-----------|---------|
-| `player.animation.json` | 42 | Primary player animations |
-| `humanoid.animation.json` | 28 | Shared humanoid animations (used by NPCs, zombies, etc.) |
-| `player_firstperson.animation.json` | 18 | First-person camera animations |
-| `look_at_target.animation.json` | 1 | Head tracking |
-| `elytra.animation.json` | 5 | Elytra/gliding scale |
-| `armor_stand.animation.json` | 15 | Armor stand poses |
-| `bow.animation.json` | 2 | Bow item animations |
-| `crossbow.animation.json` | 2 | Crossbow item animations |
-| `shield.animation.json` | 2 | Shield item animations |
-| `spear.animation.json` | 2 | Spear item animations |
-| `spyglass.animation.json` | 2 | Spyglass item animations |
+**Total: 218 animations across 69 files** affect player bone names.
 
----
+### Bones by Frequency
 
-## Detailed Animation Reference
+| Bone | Animation Count | Notes |
+|------|----------------|-------|
+| `body` | 136 | Most commonly affected bone |
+| `head` | 128 | Second most common |
+| `rightitem` | 18 | Armor stand poses, bow/crossbow |
+| `leftarm` (lowercase) | 39 | Mob-specific (enderman, piglin, etc.) |
+| `rightarm` (lowercase) | 37 | Mob-specific (enderman, piglin, etc.) |
+| `leftleg` (lowercase) | 17 | Armor stand, enderman |
+| `rightleg` (lowercase) | 17 | Armor stand, enderman |
+| `leftArm` (camelCase) | 7 | Player-compatible (agent, armor) |
+| `rightArm` (camelCase) | 8 | Player-compatible (agent, armor) |
+| `leftLeg` (camelCase) | 6 | Player-compatible (agent, armor) |
+| `rightLeg` (camelCase) | 6 | Player-compatible (agent, armor) |
+| `leftItem` | 2 | Vex, vindicator |
+| `rightItem` | 7 | Allay, copper golem, vex, vindicator |
+| `hat` | 2 | Enderman only |
+| `root` | 2 | Camel, ender dragon |
 
-### player.animation.json
-
-| Animation | Bones | Purpose |
-|-----------|-------|---------|
-| `animation.player.attack.positions` | head | Resets head rotation during attack |
-| `animation.player.attack.rotations` | body, leftArm, rightArm | Main attack — swings arms during melee combat |
-| `animation.player.base_pose.upside_down` | waist | Flips player upside down (commands) |
-| `animation.player.bob` | leftArm, rightArm | Idle arm bobbing while walking |
-| `animation.player.bob.stationary` | leftArm, rightArm | Idle arm bobbing while standing still |
-| `animation.player.bow_equipped` | leftArm, rightArm, rightItem | Bow aiming pose — arms follow look direction |
-| `animation.player.cape` | cape | Cape physics/flap animation |
-| `animation.player.crossbow_equipped` | leftArm, rightArm | Crossbow aiming pose |
-| `animation.player.crossbow_hold` | leftArm, rightArm | Holding crossbow ready |
-| `animation.player.melee_spear_attack` | body, rightArm, rightItem | Spear thrust attack animation |
-| `animation.player.glide` | leftArm, rightArm, leftLeg, rightLeg | Elytra gliding pose — limbs spread |
-| `animation.player.holding` | leftArm, rightArm | Default holding items pose |
-| `animation.player.holding_heavy_core` | rightItem | Offset for heavy core item |
-| `animation.player.holding.zombie` | leftArm, rightArm | Zombie holding pose (arms forward) |
-| `animation.player.look_at_target.inverted` | head | Head tracking when upside down |
-| `animation.player.look_at_target.ui` | head | Head tracking in UI screens |
-| `animation.player.move.arms` | leftArm, rightArm | Arm swing while walking |
-| `animation.player.move.arms.single` | leftArm, rightArm | Single-arm swing variant |
-| `animation.player.move.arms.stationary` | leftArm, rightArm | No arm movement (standing still) |
-| `animation.player.move.arms.statue_of_liberty` | leftArm, rightArm | One arm raised pose |
-| `animation.player.move.arms.zombie` | leftArm, rightArm | Zombie arms forward pose |
-| `animation.player.move.legs` | leftLeg, rightLeg | Leg animation while walking |
-| `animation.player.move.legs.inverted` | leftLeg, rightLeg | Inverted walking (upside down) |
-| `animation.player.move.legs.single` | leftLeg, rightLeg | Single-leg walk variant |
-| `animation.player.move.legs.stationary` | leftLeg, rightLeg | No leg movement (standing still) |
-| `animation.player.riding.root` | root | Base position while riding |
-| `animation.player.riding.arms` | leftArm, rightArm | Arms resting while riding |
-| `animation.player.riding.arms.zombie` | leftArm, rightArm | Zombie arms while riding |
-| `animation.player.riding.legs` | leftLeg, rightLeg | Legs while riding |
-| `animation.player.shield_block_main_hand` | rightArm, rightItem | Shield blocking with main hand |
-| `animation.player.shield_block_off_hand` | leftArm, leftItem | Shield blocking with off hand |
-| `animation.player.sleeping` | head, root | Sleeping pose — player lies horizontal |
-| `animation.player.sneaking` | body, head, leftArm, rightArm, leftLeg, rightLeg, root | Sneaking/crouching — entire body lowered |
-| `animation.player.sneaking.inverted` | body, head, leftArm, rightArm, leftLeg, rightLeg, root | Sneaking while upside down |
-| `animation.player.swim` | leftArm, rightArm, root | Swimming arm stroke (1.3s loop) |
-| `animation.player.swim.no_right_arm` | leftArm, root | Swimming with only left arm |
-| `animation.player.swim.legs` | leftLeg, rightLeg | Swimming leg kick |
-| `animation.player.swim.legs.single` | leftLeg, rightLeg | Single-leg kick variant |
-| `animation.player.swim.legs.stationary` | leftLeg, rightLeg | No leg kick (standing still in water) |
-| `animation.player.crawl` | leftArm, rightArm, root | Crawling arm animation (1.3s loop) |
-| `animation.player.crawl.no_right_arm` | leftArm, root | Crawling with only left arm |
-| `animation.player.crawl.legs` | leftLeg, rightLeg | Crawling leg animation |
+**IMPORTANT**: Many mob animations use lowercase bone names (`leftarm`, `rightarm`, `leftleg`, `rightleg`, `rightitem`) which do NOT match player bone names (`leftArm`, `rightArm`, `leftLeg`, `rightLeg`, `rightItem`). Only animations using camelCase player bone names will affect the player model.
 
 ---
 
-### humanoid.animation.json
+## BABY MOB ANIMATIONS (Head Affecting)
 
-| Animation | Bones | Purpose |
-|-----------|-------|---------|
-| `animation.humanoid.attack.rotations` | body, leftArm, rightArm | Shared attack animation for humanoids |
-| `animation.humanoid.base_pose` | waist | Default waist rotation (neutral) |
-| `animation.humanoid.big_head` | head | Enlarges head (special effects) |
-| `animation.humanoid.bob` | leftArm, rightArm | Shared idle arm bob |
-| `animation.humanoid.bow_and_arrow` | leftArm, rightArm | Shared bow aiming pose |
-| `animation.humanoid.brandish_spear` | rightArm | Spear brandish/throw pose |
-| `animation.humanoid.holding_spyglass` | rightArm | Holding spyglass up to eye |
-| `animation.humanoid.tooting_goat_horn` | rightArm, rightItem | Blowing goat horn |
-| `animation.humanoid.holding_brush` | rightItem | Brush item default position |
-| `animation.humanoid.brushing` | rightArm, rightItem | Brushing animation (suspicious sand/gravel) |
-| `animation.humanoid.celebrating` | leftArm, rightArm | Victory celebration — arms raised |
-| `animation.humanoid.charging` | rightArm | Charging attack pose |
-| `animation.humanoid.damage_nearby_mobs` | leftArm, rightArm, leftLeg, rightLeg | Iron golem smash animation |
-| `animation.humanoid.holding` | leftArm, rightArm | Default item holding pose |
-| `animation.humanoid.look_at_target.default` | head | Default head tracking |
-| `animation.humanoid.look_at_target.gliding` | head | Head tracking while gliding |
-| `animation.humanoid.look_at_target.swimming` | head | Head tracking while swimming |
-| `animation.humanoid.move` | leftArm, rightArm, leftLeg, rightLeg | Full body walk animation |
-| `animation.humanoid.riding.body` | body | Body position while riding |
-| `animation.humanoid.riding.arms` | leftArm, rightArm | Arms while riding |
-| `animation.humanoid.riding.legs` | leftLeg, rightLeg | Legs while riding |
-| `animation.humanoid.sneaking` | body, head, leftArm, rightArm, leftLeg, rightLeg | Humanoid sneak pose |
-| `animation.humanoid.swimming` | leftArm, rightArm, leftLeg, rightLeg | Full body swimming (1.3s loop) |
-| `animation.humanoid.use_item_progress` | rightArm | Using/eating animation |
-| `animation.humanoid.melee_spear_hold` | rightArm, rightItem | Holding spear ready |
-| `animation.humanoid.melee_spear_use` | rightArm, rightItem | Spear thrust attack |
-| `animation.zombie.melee_spear_hold` | leftArm, rightArm, rightItem | Zombie spear hold |
-| `animation.zombie.melee_spear_use` | leftArm, rightArm, rightItem | Zombie spear attack |
+These animations are designed for baby mobs but use the `head` bone, which means they WILL affect the player's head if applied.
+
+| File | Animation | Bones | Transform Details |
+|------|-----------|-------|-------------------|
+| `cat.animation.json` | `animation.cat.baby_transform` | head | **scale=uniform 1.5** |
+| `chicken.animation.json` | `animation.chicken.baby_transform` | head | **scale=uniform 2.0** |
+| `cow.animation.json` | `animation.cow.baby_transform` | head | position=[0, 4, 4] \| scale=uniform 2.0 |
+| `fox.animation.json` | `animation.fox.baby_transform` | head | scale=uniform 1.5 |
+| `goat.animation.json` | `animation.goat.baby_scaling` | head | scale=uniform 1.0-1.5 (varies) |
+| `hoglin.animation.json` | `animation.hoglin.baby_scaling` | head | scale=uniform 1.0-1.5 (varies) |
+| `horse_v1.animation.json` | `animation.horse.baby_transform` | body, head | body: position + scale \| head: scale=uniform 2.0 |
+| `horse_v2.animation.json` | `animation.horse.v2.baby_transform` | body, head | body: position + scale \| head: scale=uniform 2.0 |
+| `horse_v3.animation.json` | `animation.horse.v3.baby_transform` | body, head | body: position + scale \| head: scale=uniform 2.0 |
+| `llama.animation.json` | `animation.llama.baby_transform` | body, head | body: position + scale \| head: scale=uniform 1.5 |
+| `mooshroom.animation.json` | `animation.mooshroom.baby_transform` | head | position=[0, 4, 4] \| **scale=uniform 2.0** |
+| `npc.animation.json` | `animation.npc.baby_transform` | head | **scale=uniform 1.5** |
+| `ocelot.animation.json` | `animation.ocelot.baby_transform` | head | **scale=uniform 1.5** |
+| `panda.animation.json` | `animation.panda.baby_transform` | body, head | body: position + scale=[1.15, 1.15, 1.0] \| head: position + **scale=uniform 1.8** |
+| `pig.animation.json` | `animation.pig.baby_transform` | head | position=[0, 4, 4] \| **scale=uniform 2.0** |
+| `polar_bear.animation.json` | `animation.polarbear.baby_transform` | head | position=[0, -1, 3] \| **scale=uniform 1.25** |
+| `rabbit.animation.json` | `animation.rabbit.baby_transform` | head | position=[0, -1, 1] \| **scale=uniform 1.5** |
+| `sheep.animation.json` | `animation.sheep.baby_transform` | head | position=[0, 4, 4] \| **scale=uniform 2.0** |
+| `sniffer.animation.json` | `animation.sniffer.baby_transform` | head | position=[0, 1, 1] \| **scale=uniform 1.2** |
+| `villager.animation.json` | `animation.villager.baby_transform` | head | **scale=uniform 1.5** |
 
 ---
 
-### player_firstperson.animation.json
+## CAT ANIMATIONS (Torso/Body Affecting)
 
-| Animation | Bones | Purpose |
-|-----------|-------|---------|
-| `animation.player.first_person.attack_rotation` | rightArm | First-person attack swing |
-| `animation.player.first_person.attack_rotation_item` | rightItem | First-person item attack |
-| `animation.player.first_person.base_pose` | body, head | First-person base camera pose |
-| `animation.player.first_person.crossbow_equipped` | leftArm, rightItem | First-person crossbow aiming |
-| `animation.player.first_person.crossbow_hold` | rightItem | First-person crossbow hold |
-| `animation.player.first_person.melee_spear_hold` | rightItem | First-person spear hold |
-| `animation.player.first_person.melee_spear_use` | rightItem | First-person spear use |
-| `animation.player.first_person.melee_spear_attack` | rightItem | First-person spear attack |
-| `animation.player.first_person.breathing_bob` | rightItem | Idle item bob |
-| `animation.player.first_person.empty_hand` | rightArm, rightItem, leftItem | Empty hand first-person pose |
-| `animation.player.first_person.map_hold` | leftArm, rightArm | Holding map with both hands |
-| `animation.player.first_person.map_hold_attack` | leftArm, rightArm | Using map item |
-| `animation.player.first_person.map_hold_main_hand` | rightArm | Map in main hand |
-| `animation.player.first_person.map_hold_off_hand` | leftArm | Map in off hand |
-| `animation.player.first_person.swap_item` | leftArm, rightArm | Item swap animation |
-| `animation.player.first_person.shield_block` | leftArm, rightArm | First-person shield block |
-| `animation.player.first_person.vr_attack_rotation` | rightArm | VR attack swing |
-| `animation.player.first_person.walk` | leftArm, rightArm | First-person walk bob |
+These animations use the `body` bone, which affects the player's torso.
+
+| File | Animation | Bones | Transform Details |
+|------|-----------|-------|-------------------|
+| `cat.animation.json` | `animation.cat.lie_down` | body, head | body: position=[0, -4.5*liedownamount + lieonplayer*(4.5+is_baby*6), 0] \| rotation=[0, 0, lerprotate(0, 90, liedownamount)] \| head: position=[-0.1, 0, -0.5] \| rotation=[-10, lerprotate(this, 75.81, liedownamount), 0] |
+| `cat.animation.json` | `animation.cat.sit` | body, head | body: position=[0, -1, 0] \| **rotation=[-45, 0, 0]** \| head: position=[0, -1.25, 0] |
+| `cat.animation.json` | `animation.cat.sneak` | body, head | body: position=[0, -1, 0] \| head: position=[0, -1, 0] |
+| `cat.animation.json` | `animation.cat.baby_transform` | head | **scale=uniform 1.5** |
 
 ---
 
-### look_at_target.animation.json
+## FIREWORK AND ARROW ANIMATIONS (Player Scaling)
 
-| Animation | Bones | Purpose |
-|-----------|-------|---------|
-| `animation.common.look_at_target` | head | Generic head look-at target |
+These animations scale the player model.
+
+### Firework Rocket
+| File | Animation | Bones | Transform Details |
+|------|-----------|-------|-------------------|
+| `fireworks_rocket.animation.json` | `animation.fireworks_rocket.move` | body | rotation=[variable.shake_power - query.target_x_rotation, -query.target_y_rotation, 0] \| **scale=[0.6, 0.6, 0.8]** |
+
+### Arrow
+| File | Animation | Bones | Transform Details |
+|------|-----------|-------|-------------------|
+| `arrow.animation.json` | `animation.arrow.move` | body | rotation=[variable.shake_power - query.target_x_rotation, -query.target_y_rotation, 0] \| **scale=[0.7, 0.7, 0.9]** |
+
+---
+
+## ELYTRA ANIMATIONS (Body Scale)
+
+| File | Animation | Bones | Transform Details |
+|------|-----------|-------|-------------------|
+| `elytra.animation.json` | `animation.elytra.default` | body | **scale=[1.0, 1.0, 1.0]** |
+| `elytra.animation.json` | `animation.elytra.gliding` | body | **scale=[1.0, 1.0, 1.0]** |
+| `elytra.animation.json` | `animation.elytra.sleeping` | body | **scale=[1.0, 1.0, 1.0]** |
+| `elytra.animation.json` | `animation.elytra.sneaking` | body | **scale=[1.0, 1.0, 1.0]** |
+| `elytra.animation.json` | `animation.elytra.swimming` | body | **scale=[1.0, 1.0, 1.0]** |
 
 ---
 
-### elytra.animation.json
+## COMPLETE MOB ANIMATIONS BY FILE
 
-| Animation | Bones | Purpose |
-|-----------|-------|---------|
-| `animation.elytra.default` | body | Elytra default scale |
-| `animation.elytra.gliding` | body | Elytra gliding scale |
-| `animation.elytra.sneaking` | body | Elytra sneaking scale |
-| `animation.elytra.sleeping` | body | Elytra sleeping scale |
-| `animation.elytra.swimming` | body | Elytra swimming scale |
+### agent.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.agent.move` | body, leftArm, leftLeg, rightArm, rightLeg | body: position=[0, bounce, 0] \| leftArm: rotation with arm swing \| leftLeg: rotation with leg swing \| rightArm: rotation with arm swing \| rightLeg: rotation with leg swing |
+| `animation.agent.shrug` | head, leftArm, rightArm | head: position + rotation keyframes \| leftArm: position + rotation keyframes \| rightArm: position + rotation keyframes |
+| `animation.agent.swing_arms` | rightArm | rightArm: rotation with swing animation |
 
----
+### allay.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.allay.dance` | body, head | body: rotation keyframes \| head: rotation keyframes |
+| `animation.allay.fly` | body, head | body: position + rotation keyframes \| head: position + rotation keyframes |
+| `animation.allay.hold_item` | rightItem | rightItem: position, rotation, **scale=0.7** |
+| `animation.allay.hold_item_fly` | rightItem | rightItem: position, rotation, **scale=0.7** |
+| `animation.allay.idle` | body, head | body: position + rotation keyframes \| head: position keyframes |
+
+### armor.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.armor.boots.offset` | leftLeg, rightLeg | leftLeg: position offset \| rightLeg: position offset |
+| `animation.armor.chestplate.offset` | body, leftArm, rightArm | body: position offset \| leftArm: position offset \| rightArm: position offset |
+| `animation.armor.helmet.offset` | head | head: position offset |
+| `animation.armor.leggings.offset` | body, leftLeg, rightLeg | body: position offset \| leftLeg: position offset \| rightLeg: position offset |
 
 ### armor_stand.animation.json
-
-All armor stand poses affect: `body`, `head`, `leftArm`, `rightArm`, `leftLeg`, `rightLeg`, `rightItem`
+All armor stand poses affect: body, head, leftarm, leftleg, rightarm, rightitem, rightleg
 
 | Animation | Purpose |
 |-----------|---------|
@@ -217,149 +191,480 @@ All armor stand poses affect: `body`, `head`, `leftArm`, `rightArm`, `leftLeg`, 
 | `animation.armor_stand.salute_pose` | Salute pose |
 | `animation.armor_stand.solemn_pose` | Solemn pose |
 | `animation.armor_stand.zombie_pose` | Zombie pose |
-| `animation.armor_stand.wiggle` | Wiggle animation (baseplate only) |
 | `animation.armor_stand.holding_heavy_core` | Heavy core offset (rightItem only) |
 
----
+### axolotl.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.axolotl.idle_floor` | body, head | body: rotation keyframes \| head: rotation keyframes |
+| `animation.axolotl.idle_floor_underwater` | body | body: position + rotation keyframes |
+| `animation.axolotl.idle_underwater` | body, head | body: position + rotation keyframes \| head: rotation keyframes |
+| `animation.axolotl.play_dead` | body, head | body: rotation=[0, 0, 45] \| head: rotation=[0, 0, 45] |
+| `animation.axolotl.swim` | body, head | body: position + rotation keyframes \| head: rotation keyframes |
+| `animation.axolotl.swim_angle` | body | body: rotation=[pitch, 0, 0] |
+| `animation.axolotl.walk_floor` | body, head | body: rotation keyframes \| head: rotation keyframes |
+| `animation.axolotl.walk_floor_underwater` | body, head | body: position + rotation keyframes \| head: rotation keyframes |
 
-### Item Animations
+### bat.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.bat.flying` | Head, body | Head: position + rotation keyframes \| body: position + rotation keyframes |
+| `animation.bat.resting` | Head, body | Head: position=[0, 0.3, 0] \| rotation=[target_x, 180-target_y, 180] \| body: position=[0, 0.3, 0] \| rotation=[180, 0, 0] |
 
-#### bow.animation.json
-| Animation | Bones | Purpose |
-|-----------|-------|---------|
-| `animation.bow.wield` | `rightItem` | Bow holding pose |
-| `animation.bow.wield_first_person_pull` | `rightItem` | Bow pull in first person |
+### bow.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.bow.wield` | rightItem | rightItem: position + rotation (first/third person variants) |
+| `animation.bow.wield_first_person_pull` | rightItem | rightItem: position with shake + rotation |
 
-#### crossbow.animation.json
-| Animation | Bones | Purpose |
-|-----------|-------|---------|
-| `animation.crossbow.wield` | `rightItem` | Crossbow holding pose |
-| `animation.crossbow.wield_first_person_pull` | `rightItem` | Crossbow pull in first person |
+### breeze.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.breeze.idle` | head | head: position keyframes |
+| `animation.breeze.jump` | body, head | body: position keyframes \| head: rotation keyframes |
+| `animation.breeze.shoot` | body, head | body: position + rotation keyframes \| head: position + rotation keyframes |
+| `animation.breeze.slide` | body | body: position keyframes |
 
----
+### camel.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.camel.dash` | body, head | body: rotation keyframes \| head: rotation keyframes |
+| `animation.camel.idle` | head | head: rotation=[xHeadRot, yHeadRot, 0] |
+| `animation.camel.sit` | body | body: position=[0, -19.9, 0] |
+| `animation.camel.sit_down` | body, head | body: position + rotation keyframes \| head: rotation keyframes |
+| `animation.camel.stand_up` | body, head | body: position + rotation keyframes \| head: rotation keyframes |
+| `animation.camel.walk` | head, root | head: rotation keyframes \| root: rotation keyframes |
 
-## Quick Reference: Bones by Animation Category
+### cat.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.cat.baby_transform` | head | **scale=uniform 1.5** |
+| `animation.cat.lie_down` | body, head | body: position + rotation with lie down amount \| head: position + rotation |
+| `animation.cat.sit` | body, head | body: position=[0, -1, 0] \| **rotation=[-45, 0, 0]** \| head: position=[0, -1.25, 0] |
+| `animation.cat.sneak` | body, head | body: position=[0, -1, 0] \| head: position=[0, -1, 0] |
 
-### Walking/Movement
-- `animation.player.move.arms` → leftArm, rightArm
-- `animation.player.move.legs` → leftLeg, rightLeg
-- `animation.player.bob` → leftArm, rightArm
-- `animation.humanoid.move` → leftArm, rightArm, leftLeg, rightLeg
+### chicken.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.chicken.baby_transform` | head | **scale=uniform 2.0** |
+| `animation.chicken.general` | body | body: rotation=[-this, 0, 0] |
+| `animation.chicken.general.v1.0` | body | body: rotation=[90-this, 0, 0] |
 
-### Combat
-- `animation.player.attack.rotations` → body, leftArm, rightArm
-- `animation.player.bow_equipped` → leftArm, rightArm, rightItem
-- `animation.player.crossbow_equipped` → leftArm, rightArm
-- `animation.player.melee_spear_attack` → body, rightArm, rightItem
+### cod.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.cod.flop` | body, head | body: rotation with flop animation \| head: rotation with flop |
+| `animation.cod.swim` | body, head | body: rotation with swim animation \| head: rotation with swim |
 
-### Sneaking
-- `animation.player.sneaking` → body, head, leftArm, rightArm, leftLeg, rightLeg, root
-- `animation.humanoid.sneaking` → body, head, leftArm, rightArm, leftLeg, rightLeg
+### copper_golem.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.copper_golem.chest_interaction.put_item` | body, head, rightItem | body: position + rotation keyframes \| head: position + rotation keyframes \| rightItem: position, rotation, **scale=0.6** |
+| `animation.copper_golem.chest_interaction.put_item_fail` | body, head, rightItem | body: position + rotation keyframes \| head: position + rotation keyframes \| rightItem: position, rotation, **scale=0.6** |
+| `animation.copper_golem.chest_interaction.take_item` | body, head, rightItem | body: position + rotation keyframes \| head: position + rotation keyframes \| rightItem: position, rotation, **scale=0.6** |
+| `animation.copper_golem.chest_interaction.take_item_fail` | body, head, rightItem | body: position + rotation keyframes \| head: position + rotation keyframes \| rightItem: position, rotation, **scale=0.6** |
+| `animation.copper_golem.spin` | body, head | body: rotation keyframes \| head: rotation keyframes |
+| `animation.copper_golem.spin.oxidized` | body, head | body: rotation keyframes \| head: rotation keyframes |
+| `animation.copper_golem.spin.weathered` | body, head | body: rotation keyframes \| head: rotation keyframes |
+| `animation.copper_golem.walk` | body, head | body: position + rotation keyframes \| head: rotation keyframes |
+| `animation.copper_golem.walk_holding_item` | body, head | body: position + rotation keyframes \| head: rotation keyframes |
+| `animation.copper_golem.hold_item` | rightItem | rightItem: position, rotation, **scale=0.6** |
 
-### Swimming/Crawling
-- `animation.player.swim` → leftArm, rightArm, root
-- `animation.player.swim.legs` → leftLeg, rightLeg
-- `animation.player.crawl` → leftArm, rightArm, root
-- `animation.player.crawl.legs` → leftLeg, rightLeg
+### cow.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.cow.baby_transform` | head | position=[0, 4, 4] \| **scale=uniform 2.0** |
+| `animation.cow.setup` | body | body: rotation=[-this, 0, 0] |
+| `animation.cow.setup.v1.0` | body | body: rotation=[90-this, 0, 0] |
 
-### Riding
-- `animation.player.riding.root` → root
-- `animation.player.riding.arms` → leftArm, rightArm
-- `animation.player.riding.legs` → leftLeg, rightLeg
+### creaking.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.creaking.attack` | head, leftArm, leftLeg, rightArm, rightLeg | Multiple rotation keyframes for attack animation |
+| `animation.creaking.look_at_target` | head | head: rotation with look-at |
+| `animation.creaking.sway` | leftArm, rightArm | Arm sway animation |
+| `animation.creaking.twitch` | head, leftArm, rightArm | Twitch animation |
+| `animation.creaking.walk` | head, leftArm, leftLeg, rightArm, rightLeg | Walk animation |
 
-### Sleeping
-- `animation.player.sleeping` → head, root
+### creeper.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.creeper.swelling` | body, head | body: scale animation \| head: scale animation |
 
-### Elytra/Gliding
-- `animation.player.glide` → leftArm, rightArm, leftLeg, rightLeg
-- `animation.elytra.*` → body (scale only)
+### dolphin.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.dolphin.move` | body | body: position + rotation keyframes |
 
-### Look-At
-- `animation.common.look_at_target` → head
-- `animation.humanoid.look_at_target.*` → head
+### drowned.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.drowned.attack.rotations` | body, leftarm, rightarm | Attack rotation animations |
 
-### Shield
-- `animation.player.shield_block_main_hand` → rightArm, rightItem
-- `animation.player.shield_block_off_hand` → leftArm, leftItem
+### elytra.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.elytra.default` | body | **scale=[1.0, 1.0, 1.0]** |
+| `animation.elytra.gliding` | body | **scale=[1.0, 1.0, 1.0]** |
+| `animation.elytra.sleeping` | body | **scale=[1.0, 1.0, 1.0]** |
+| `animation.elytra.sneaking` | body | **scale=[1.0, 1.0, 1.0]** |
+| `animation.elytra.swimming` | body | **scale=[1.0, 1.0, 1.0]** |
 
-### First Person
-- `animation.player.first_person.*` → rightArm, leftArm, rightItem, leftItem, body, head
+### ender_dragon.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.ender_dragon.neck_head_movement` | head | Complex neck/head rotation |
+| `animation.ender_dragon.setup` | root | Root setup transformation |
+
+### enderman.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.enderman.arms_legs` | leftarm, leftleg, rightarm, rightleg | Arm and leg animations |
+| `animation.enderman.base_pose` | body, head, leftarm, leftleg, rightarm, rightitem, rightleg, hat | Base pose with hat layer |
+| `animation.enderman.carrying` | leftarm, rightarm | Carrying animation |
+| `animation.enderman.scary_face` | head, hat | Scary face animation |
+
+### evoker.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.evoker.casting` | leftarm, rightarm | Casting spell animation |
+| `animation.evoker.casting.v1.0` | leftarm, rightarm | Casting spell animation v1 |
+| `animation.evoker.general` | leftarm, rightarm | General evoker animation |
+| `animation.evoker.move` | leftLeg, rightLeg | Walking animation |
+
+### fox.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.fox.baby_transform` | head | **scale=uniform 1.5** |
+| `animation.fox.crouch` | body, head | Crouch animation |
+| `animation.fox.pounce` | body, head | Pounce animation |
+| `animation.fox.setup` | body | Setup animation |
+| `animation.fox.sit` | body, head | Sit animation |
+| `animation.fox.sleep` | body, head | Sleep animation |
+| `animation.fox.stuck` | body | Stuck animation |
+| `animation.fox.wiggle` | body, head | Wiggle animation |
+
+### fireworks_rocket.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.fireworks_rocket.move` | body | rotation=[shake_power - target_x, -target_y, 0] \| **scale=[0.6, 0.6, 0.8]** |
+
+### frog.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.frog.idle.water` | body | Water idle animation |
+| `animation.frog.jump` | body | Jump animation |
+| `animation.frog.swim` | body | Swim animation |
+| `animation.frog.tongue` | head | Tongue animation |
+| `animation.frog.walk` | body | Walk animation |
+
+### goat.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.goat.attack` | head | Attack animation |
+| `animation.goat.baby_scaling` | head | **scale=uniform 1.0-1.5** |
+| `animation.goat.look_at_target` | head | Look-at animation |
+| `animation.goat.ram_attack` | head | Ram attack animation |
+
+### happy_ghast.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.happy_ghast.scale` | body | **scale animation** |
+
+### hoglin.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.hoglin.attack` | head | Attack animation |
+| `animation.hoglin.baby_scaling` | head | **scale=uniform 1.0-1.5** |
+| `animation.hoglin.look_at_target` | head | Look-at animation |
+
+### horse_v1.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.horse.baby_transform` | body, head | body: position + scale \| head: **scale=uniform 2.0** |
+| `animation.horse.eat` | head | Eat animation |
+| `animation.horse.look_at_player` | head | Look-at animation |
+| `animation.horse.setup` | head | Setup animation |
+| `animation.horse.stand` | body, head | Stand animation |
+| `animation.horse.walk` | head | Walk animation |
+
+### horse_v2.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.horse.v2.baby_transform` | body, head | body: position + scale \| head: **scale=uniform 2.0** |
+| `animation.horse.v2.setup` | body, head | Setup animation |
+| `animation.horse.v2.stand` | body, head | Stand animation |
+
+### horse_v3.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.horse.v3.baby_transform` | body, head | body: position + scale \| head: **scale=uniform 2.0** |
+| `animation.horse.v3.rear` | body, head | Rear animation |
+
+### iron_golem.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.iron_golem.walk` | body, head | Walk animation |
+| `animation.iron_golem.walk_to_target` | body, head | Walk to target animation |
+
+### llama.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.llama.baby_transform` | body, head | body: position + scale \| head: **scale=uniform 1.5** |
+| `animation.llama.baby_transform.v1.0` | body, head | body: position + scale \| head: **scale=uniform 1.5** |
+| `animation.llama.setup` | body | Setup animation |
+| `animation.llama.setup.v1.0` | body | Setup animation v1 |
+
+### llama_spit.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.llama_spit.setup` | body | body: position=[0, -15, 0] \| rotation with target tracking |
+
+### look_at_target.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.common.look_at_target` | head | head: rotation=[target_x - this, target_y - this, 0] |
+
+### mooshroom.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.mooshroom.baby_transform` | head | position=[0, 4, 4] \| **scale=uniform 2.0** |
+| `animation.mooshroom.setup` | body | body: rotation=[-this, 0, 0] |
+| `animation.mooshroom.setup.v1.0` | body | body: rotation=[90-this, 0, 0] |
+
+### nautilus.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.nautilus.breathe` | body | body: scale keyframes |
+| `animation.nautilus.look_at_target` | body, head | body: rotation \| head: rotation |
+| `animation.nautilus.swim` | head | head: position keyframes |
+
+### npc.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.npc.baby_transform` | head | **scale=uniform 1.5** |
+| `animation.npc.get_in_bed` | body | body: position=[0, 1, -15] \| rotation=[-90, 0, 0] |
+
+### ocelot.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.ocelot.baby_transform` | head | **scale=uniform 1.5** |
+| `animation.ocelot.sit` | body, head | body: rotation=[-45, 0, 0] \| head: position=[0, -2, 0] |
+| `animation.ocelot.sneak` | body, head | body: position=[0, -1, 0] \| head: position=[0, -1, 0] |
+
+### panda.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.panda.baby_transform` | body, head | body: position + **scale=[1.15, 1.15, 1.0]** \| head: position + **scale=uniform 1.8** |
+| `animation.panda.lying` | body, head | Lying animation with roll |
+| `animation.panda.rolling` | body, head | Rolling animation |
+| `animation.panda.sitting` | body, head | Sitting animation |
+| `animation.panda.sneezing` | head | Sneezing animation |
+| `animation.panda.unhappy` | head | Unhappy animation |
+
+### parrot.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.parrot.base` | body, head | body: position + rotation \| head: position + rotation |
+| `animation.parrot.dance` | body, head | body: position \| head: rotation |
+| `animation.parrot.moving` | body | body: position with wing flap |
+| `animation.parrot.sitting` | body | body: position=[0, -1.9, 0] |
+
+### phantom.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.phantom.base_pose` | body | body: position=[0, -20, 0] \| rotation=[-target_x, 0, 0] |
+
+### pig.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.pig.baby_transform` | head | position=[0, 4, 4] \| **scale=uniform 2.0** |
+| `animation.pig.setup` | body | body: rotation=[-this, 0, 0] |
+| `animation.pig.setup.v1.0` | body | body: rotation=[90-this, 0, 0] |
+
+### piglin.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.piglin.admire` | head, leftarm | head: rotation=[30, 0, 0] \| leftarm: rotation=[320, 25, 0] |
+| `animation.piglin.celebrate_hunt_special` | body, head, leftarm, rightarm | Celebrate animation |
+| `animation.piglin.crossbow.charge` | leftarm, rightarm | Crossbow charge animation |
+| `animation.piglin.crossbow.hold` | leftarm, rightarm | Crossbow hold animation |
+| `animation.piglin.hand.attack` | leftarm, rightarm | Hand attack animation |
+| `animation.piglin.move` | leftarm, leftleg, rightarm, rightleg | Walk animation |
+| `animation.piglin.sword.attack` | leftarm, rightarm | Sword attack animation |
+
+### pillager.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.pillager.crossbow.charge` | leftarm, rightarm | Crossbow charge animation |
+| `animation.pillager.crossbow.hold` | leftarm, rightarm | Crossbow hold animation |
+
+### polar_bear.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.polarbear.baby_transform` | head | position=[0, -1, 3] \| **scale=uniform 1.25** |
+| `animation.polarbear.move` | body | body: position + rotation with standing scale |
+
+### pufferfish.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.pufferfish.flop` | body | body: rotation with flop animation |
+
+### rabbit.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.rabbit.baby_transform` | head | position=[0, -1, 1] \| **scale=uniform 1.5** |
+
+### sheep.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.sheep.baby_transform` | head | position=[0, 4, 4] \| **scale=uniform 2.0** |
+| `animation.sheep.grazing` | head | head: position + rotation keyframes |
+| `animation.sheep.setup` | body, head | body: rotation \| head: position |
+
+### shulker.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.shulker.move` | head | head: position with shulker facing |
+
+### shulker_bullet.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.shulker_bullet.move` | body | body: rotation with life time |
+
+### skeleton.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.skeleton.attack` | leftarm, rightarm | Attack animation |
+
+### sniffer.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.sniffer.baby_transform` | head | position=[0, 1, 1] \| **scale=uniform 1.2** |
+| `animation.sniffer.dig` | body, head | Dig animation with keyframes |
+| `animation.sniffer.feeling_happy` | head | Happy animation |
+| `animation.sniffer.longsniff` | head | Long sniff animation |
+| `animation.sniffer.search` | body, head | Search animation |
+| `animation.sniffer.stand_up` | body, head | Stand up animation |
+| `animation.sniffer.walk` | body, head | Walk animation |
+
+### spider.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.spider.look_at_target` | head | head: rotation with target tracking |
+
+### squid.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.squid.move` | body | body: position=[0, 7.2/7.5, 1.8] |
+| `animation.squid.rotate` | body | body: rotation with swim rotation |
+
+### strider.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.strider.look_at_target.default` | body | body: rotation with target tracking |
+| `animation.strider.walk` | body | body: position + rotation with walk |
+
+### tripod_camera.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.tripod_camera.neutral` | body | body: position=[0, -this, 0] |
+
+### tropicalfish.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.tropicalfish.flop` | body | body: rotation with flop animation |
+
+### turtle.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.turtle.general` | body | body: position + rotation |
+
+### vex.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.vex.charge` | leftarm, rightarm | Charge animation |
+| `animation.vex.idle` | leftItem, leftarm, rightItem, rightarm | Idle animation with **scale=0.7** on items |
+
+### villager.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.villager.baby_transform` | head | **scale=uniform 1.5** |
+| `animation.villager.get_in_bed` | body | body: position=[0, 1, -15] \| rotation=[-90, 0, 0] |
+
+### vindicator.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.vindicator.attack` | leftarm, rightarm | Attack animation |
+| `animation.vindicator.base` | leftItem, leftarm, rightItem, rightarm | Base animation with **scale expression** on items |
+| `animation.vindicator.hand_attack` | leftarm, rightarm | Hand attack animation |
+| `animation.vindicator.riding.arms` | leftarm | Riding animation |
+
+### warden.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.warden.attack` | body, head | Attack animation |
+| `animation.warden.bob` | body, head | Bob animation |
+| `animation.warden.dig` | body, head | Dig animation |
+| `animation.warden.emerge` | body, head | Emerge animation |
+| `animation.warden.look_at_target.default` | head | Look-at animation |
+| `animation.warden.move` | body, head | Move animation |
+| `animation.warden.roar` | body, head | Roar animation |
+| `animation.warden.sniff` | body, head | Sniff animation |
+| `animation.warden.sonic_boom` | body, head | Sonic boom animation |
+
+### wither_skeleton.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.wither_skeleton.attack` | leftarm, rightarm | Attack animation |
+
+### wither_skull.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.wither_skull.move` | head | head: rotation=[0, -target_y, 0] |
+
+### zombie.animation.json
+| Animation | Bones | Transform Details |
+|-----------|-------|-------------------|
+| `animation.zombie.attack_bare_hand` | leftarm, rightarm | Attack animation |
+| `animation.zombie.swimming` | body, leftarm, leftleg, rightarm, rightleg | Swimming animation |
 
 ---
 
 ## Bones NOT Animated by Any Vanilla Animation
 
 The following player bones have NO dedicated vanilla animations:
-- **`hat`** — No animation (follows head automatically via bone hierarchy)
+- **`hat`** — Only used by enderman (base_pose, scary_face)
 - **`leftSleeve`** — No animation (follows leftArm automatically)
 - **`rightSleeve`** — No animation (follows rightArm automatically)
 - **`jacket`** — No animation (follows body automatically)
 - **`leftPants`** — No animation (follows leftLeg automatically)
 - **`rightPants`** — No animation (follows rightLeg automatically)
 
-These "overlay" bones are designed to follow their parent bone without separate animation data.
-
 ---
 
-## Common Animation Effects
+## Key Findings
 
-Useful for skin pack manipulation:
+### 1. Baby Mob Animations Affect Head
+All baby mob animations use `scale` on the `head` bone, typically ranging from 1.2x to 2.0x. If applied to a player, these will scale the player's head.
 
-| Animation | Effect |
-|-----------|--------|
-| `animation.witch.general` | Stops any/all original animations |
-| `animation.evoker.general` | Removes arms/torso area |
-| `animation.parrot.sitting` | Moves torso area down by roughly 2 pixels |
-| `animation.axolotl.idle_floor_underwater` | Moves torso area up by roughly 2 pixels |
-| `animation.fireworks_rocket.move` | Scales torso area to about 0.6, moves with head |
-| `animation.arrow.move` | Same as fireworks, head gets stretched |
-| `animation.humanoid.big_head` | Scales head and outer skin layers to different sizes |
-| `animation.enderman.scary_face` | Moves head higher than outer skin layer |
-| `animation.tripod_camera.neutral` | Moves torso area to the floor |
-| `animation.elytra.default` | Scales torso area up by 1 pixel |
-| `animation.player.base_pose.upside_down` | Makes torso area upside-down |
-| `animation.strider.look_at_target.default` | Fixes issues with enderman, fireworks, and arrow animations |
-| `animation.goat.look_at_target` | Limits player head movement slightly |
+### 2. Cat Animations Affect Torso
+The `cat.sit` animation applies a **-45 degree X rotation** to the body, while `cat.lie_down` applies a **90 degree Z rotation** when fully lying down.
 
----
+### 3. Firework and Arrow Scale Player
+- `fireworks_rocket.move`: Scales body to **[0.6, 0.6, 0.8]**
+- `arrow.move`: Scales body to **[0.7, 0.7, 0.9]**
 
-## Complete Cross-File Animation Scan
+### 4. Case Sensitivity Matters
+Many mob animations use lowercase bone names (`leftarm`, `rightarm`, etc.) which do NOT match player bone names (`leftArm`, `rightArm`, etc.). Only animations using camelCase player bone names will affect the player model.
 
-**Total: 386 animations across 68 files** affect player bone names.
-
-Many mob animations use the same bone names as the player (body, head, leftarm, rightarm, etc.). Below is a summary of notable mob animations that affect player-like bones:
-
-| File | Notable Animations | Bones Used |
-|------|-------------------|------------|
-| `agent.animation.json` | move, swing_arms, shrug | body, head, leftArm, leftLeg, rightArm, rightLeg |
-| `allay.animation.json` | idle, fly, hold_item, dance | body, head, rightItem |
-| `armadillo.animation.json` | walk, roll_up, rolled_up | body, head |
-| `drowned.animation.json` | attack.rotations, swimming | body, leftarm, rightarm, leftleg, rightleg, root |
-| `enderman.animation.json` | base_pose, scary_face, carrying | body, hat, head, leftarm, leftleg, rightarm, rightleg |
-| `evoker.animation.json` | casting, general, move | leftarm, leftLeg, rightarm, rightLeg |
-| `fox.animation.json` | crouch, pounce, sit, sleep | body, head |
-| `piglin.animation.json` | crossbow.charge, sword.attack, move | body, head, leftarm, leftleg, rightarm, rightleg |
-| `skeleton.animations.v1.0.json` | Full humanoid set | body, head, leftarm, leftleg, rightarm, rightleg, waist |
-| `villager.animation.json` | get_in_bed | body |
-| `warden.animation.json` | move, emerge, dig, roar, sniff | body, head |
-| `zombie.animation.json` | attack_bare_hand, swimming | body, leftarm, leftleg, rightarm, rightleg |
+### 5. Scale Animations
+The following animations apply scale transforms that would affect the player:
+- Baby transforms: 1.2x to 2.0x head scale
+- Firework: 0.6x body scale
+- Arrow: 0.7x body scale
+- Vex items: 0.7x scale
+- Copper golem items: 0.6x scale
+- Happy ghast: body scale animation
 
 ---
-
-## Dressing Room Animations
-
-These persona/dressing room animations use player-like bone names:
-
-| Animation | Bones |
-|-----------|-------|
-| `animation.idle_arm_1` | leftArm, rightArm, waist |
-| `animation.idle_back_1` | body, head, leftArm, leftLeg, rightArm, rightLeg, root, waist |
-| `animation.idle_bottom_1` | leftLeg, rightLeg, root, waist |
-| `animation.idle_torso_1` | body, head, leftArm, rightArm, waist |
-| `animation.react_arm_1` | leftArm, rightArm, waist |
-| `animation.react_back_1` | body, head, leftArm, leftLeg, rightArm, rightLeg, root, waist |
-| `animation.react_bored_1` | body, head, leftArm, leftLeg, rightArm, rightLeg, root, waist |
-| `animation.react_confirm_1` | body, head, leftArm, leftLeg, rightArm, rightLeg, root, waist |
-| `animation.react_head_1` | head, waist |
-| `animation.react_idle` | body, head, leftArm, leftLeg, rightArm, rightLeg, root, waist |
-| `animation.react_offer_1` | body, head, leftArm, leftLeg, rightArm, rightLeg, root, waist |
