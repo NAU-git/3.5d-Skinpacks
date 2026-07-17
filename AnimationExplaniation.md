@@ -1,5 +1,5 @@
-# Animation References
-## Vanilla Resource Pack v26.0.0
+# Minecraft Bedrock Player Animation Reference
+## Vanilla Resource Pack v26.0.0 Analysis
 
 ---
 
@@ -71,913 +71,130 @@ root
 
 ### player.animation.json
 
----
-
-#### animation.player.attack.positions
-- **Loop:** Yes
-- **Bones Affected:** `head`
-- **Properties:** rotation (static: [0,0,0])
-- **Purpose:** Resets head rotation during attack
-
----
-
-#### animation.player.attack.rotations
-- **Loop:** Yes
-- **Bones Affected:** `body`, `leftArm`, `rightArm`
-- **Properties:**
-  - `body` → rotation (dynamic)
-  - `leftArm` → rotation (dynamic)
-  - `rightArm` → rotation (30° swing)
-- **Purpose:** Main attack animation — swings arms during melee combat
-
----
-
-#### animation.player.base_pose.upside_down
-- **Loop:** Yes
-- **Bones Affected:** `waist`
-- **Properties:**
-  - `waist` → position [0, 8, 0], rotation [0, 0, 180°]
-- **Purpose:** Flips player upside down (used by commands)
-
----
-
-#### animation.player.bob
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - `leftArm` → rotation (cosine wave)
-  - `rightArm` → rotation (opposite cosine wave)
-- **Purpose:** Idle arm bobbing while walking
-
----
-
-#### animation.player.bob.stationary
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:** Same as bob
-- **Purpose:** Idle arm bobbing while standing still
-
----
-
-#### animation.player.bow_equipped
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`, `rightItem`
-- **Properties:**
-  - `leftArm` → rotation (target rotation + sneaking offset)
-  - `rightArm` → rotation (target rotation)
-  - `rightItem` → rotation [0, -10, 0] (static)
-- **Purpose:** Bow aiming pose — arms follow look direction
-
----
-
-#### animation.player.cape
-- **Loop:** Yes
-- **Bones Affected:** `cape`
-- **Properties:**
-  - `cape` → position (armor offset), rotation (dynamic)
-- **Purpose:** Cape physics/flap animation
-
----
-
-#### animation.player.crossbow_equipped
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - `leftArm` → position [0, 0, 0.5], rotation (dynamic)
-  - `rightArm` → rotation (dynamic)
-- **Purpose:** Crossbow aiming pose
-
----
-
-#### animation.player.crossbow_hold
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - `leftArm` → rotation (swimming check, target rotation)
-  - `rightArm` → rotation (swimming check, target rotation)
-- **Purpose:** Holding crossbow ready
-
----
-
-#### animation.player.melee_spear_attack
-- **Loop:** Yes
-- **Bones Affected:** `body`, `rightArm`, `rightItem`
-- **Properties:**
-  - `body` → rotation (attack body rotation)
-  - `rightArm` → rotation (spear attack motion)
-  - `rightItem` → position [0, -1.5, -1.5], rotation (dynamic)
-- **Purpose:** Spear thrust attack animation
-
----
-
-#### animation.player.glide
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`, `leftLeg`, `rightLeg`
-- **Properties:**
-  - Arms → rotation (spread out)
-  - Legs → rotation (slight angle)
-- **Purpose:** Elytra gliding pose — limbs spread
-
----
-
-#### animation.player.holding
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation (holding position)
-- **Purpose:** Default holding items pose
-
----
-
-#### animation.player.holding_heavy_core
-- **Loop:** Yes
-- **Bones Affected:** `rightItem`
-- **Properties:**
-  - `rightItem` → position [-1, 0, -2]
-- **Purpose:** Offset for heavy core item
-
----
-
-#### animation.player.holding.zombie
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation [0, 0, 0] (static)
-- **Purpose:** Zombie holding pose (arms forward)
-
----
-
-#### animation.player.look_at_target.inverted
-- **Loop:** Yes
-- **Bones Affected:** `head`
-- **Properties:**
-  - `head` → rotation (inverted look-at)
-- **Purpose:** Head tracking when upside down
-
----
-
-#### animation.player.look_at_target.ui
-- **Loop:** Yes
-- **Bones Affected:** `head`
-- **Properties:**
-  - `head` → rotation (UI look direction)
-- **Purpose:** Head tracking in UI screens
-
----
-
-#### animation.player.move.arms
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation (walk cycle)
-- **Purpose:** Arm swing while walking
-
----
-
-#### animation.player.move.arms.single
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation (one-armed walk)
-- **Purpose:** Single-arm swing variant
-
----
-
-#### animation.player.move.arms.stationary
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation [0, 0, 0] (static)
-- **Purpose:** No arm movement (standing still)
-
----
-
-#### animation.player.move.arms.statue_of_liberty
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - `leftArm` → rotation (raised up)
-  - `rightArm` → rotation (normal)
-- **Purpose:** One arm raised pose
-
----
-
-#### animation.player.move.arms.zombie
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation [-90, 0, 0] (static, arms forward)
-- **Purpose:** Zombie arms forward pose
-
----
-
-#### animation.player.move.legs
-- **Loop:** Yes
-- **Bones Affected:** `leftLeg`, `rightLeg`
-- **Properties:**
-  - `leftLeg` → rotation (walk cycle, slight angle)
-  - `rightLeg` → rotation (walk cycle, opposite phase)
-- **Purpose:** Leg animation while walking
-
----
-
-#### animation.player.move.legs.inverted
-- **Loop:** Yes
-- **Bones Affected:** `leftLeg`, `rightLeg`
-- **Properties:**
-  - Both legs → position [0, 8, 0], rotation (inverted angles)
-- **Purpose:** Inverted walking (upside down)
-
----
-
-#### animation.player.move.legs.single
-- **Loop:** Yes
-- **Bones Affected:** `leftLeg`, `rightLeg`
-- **Properties:**
-  - Both legs → rotation (walk cycle)
-- **Purpose:** Single-leg walk variant
-
----
-
-#### animation.player.move.legs.stationary
-- **Loop:** Yes
-- **Bones Affected:** `leftLeg`, `rightLeg`
-- **Properties:**
-  - `leftLeg` → rotation [0, -0.1, -0.1] (static)
-  - `rightLeg` → rotation [0, 0.1, 0.1] (static)
-- **Purpose:** No leg movement (standing still)
-
----
-
-#### animation.player.riding.root
-- **Loop:** Yes
-- **Bones Affected:** `root`
-- **Properties:**
-  - `root` → position (riding offset)
-- **Purpose:** Base position while riding
-
----
-
-#### animation.player.riding.arms
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation [-36, 0, 0] (static)
-- **Purpose:** Arms resting while riding
-
----
-
-#### animation.player.riding.arms.zombie
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation [45, 0, 0] (static)
-- **Purpose:** Zombie arms while riding
-
----
-
-#### animation.player.riding.legs
-- **Loop:** Yes
-- **Bones Affected:** `leftLeg`, `rightLeg`
-- **Properties:**
-  - Both legs → rotation (sitting pose)
-- **Purpose:** Legs while riding
-
----
-
-#### animation.player.shield_block_main_hand
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`, `rightItem`
-- **Properties:**
-  - `rightArm` → rotation [-20, -30, -25] (static)
-  - `rightItem` → position [-1, -3, 0], rotation [0, -60, -45] (static)
-- **Purpose:** Shield blocking with main hand
-
----
-
-#### animation.player.shield_block_off_hand
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `leftItem`
-- **Properties:**
-  - `leftArm` → rotation [-20, 20, 20] (static)
-  - `leftItem` → position (dynamic), rotation (dynamic)
-- **Purpose:** Shield blocking with off hand
-
----
-
-#### animation.player.sleeping
-- **Loop:** Yes
-- **Bones Affected:** `head`, `root`
-- **Properties:**
-  - `head` → rotation (dynamic)
-  - `root` → position (dynamic), rotation [-90, 0, 0] (lying down)
-- **Purpose:** Sleeping pose — player lies horizontal
-
----
-
-#### animation.player.sneaking
-- **Loop:** Yes
-- **Bones Affected:** `body`, `head`, `leftArm`, `rightArm`, `leftLeg`, `rightLeg`, `root`
-- **Properties:**
-  - `body` → position [0, -2, 0] (static, lowered)
-  - `head` → position [0, -1, 0] (static, lowered)
-  - `leftArm` → rotation [-5.7, 0, 0] (static, arms down)
-  - `rightArm` → rotation [-5.7, 0, 0] (static, arms down)
-  - `leftLeg` → rotation [-28, -0.1, -0.1] (static, bent)
-  - `rightLeg` → rotation [-28, 0.1, 0.1] (static, bent)
-  - `root` → position [0, 1.25, 9], rotation (dynamic)
-- **Purpose:** Sneaking/crouching pose — entire body lowered
-
----
-
-#### animation.player.sneaking.inverted
-- **Loop:** Yes
-- **Bones Affected:** `body`, `head`, `leftArm`, `rightArm`, `leftLeg`, `rightLeg`, `root`
-- **Properties:** Same as sneaking but inverted angles
-- **Purpose:** Sneaking while upside down
-
----
-
-#### animation.player.swim
-- **Loop:** Yes | **Length:** 1.3s
-- **Bones Affected:** `leftArm`, `rightArm`, `root`
-- **Properties:**
-  - `leftArm` → rotation (4 keyframes — swim stroke)
-  - `rightArm` → rotation (4 keyframes — swim stroke)
-  - `root` → position (dynamic), rotation (horizontal)
-- **Purpose:** Swimming arm stroke animation
-
----
-
-#### animation.player.swim.no_right_arm
-- **Loop:** Yes | **Length:** 1.3s
-- **Bones Affected:** `leftArm`, `root`
-- **Properties:** Same as swim but only left arm
-- **Purpose:** Swimming with only left arm (right arm occupied)
-
----
-
-#### animation.player.swim.legs
-- **Loop:** Yes
-- **Bones Affected:** `leftLeg`, `rightLeg`
-- **Properties:**
-  - Both legs → rotation (kick cycle)
-- **Purpose:** Swimming leg kick animation
-
----
-
-#### animation.player.swim.legs.single
-- **Loop:** Yes
-- **Bones Affected:** `leftLeg`, `rightLeg`
-- **Properties:** Same as swim.legs
-- **Purpose:** Single-leg kick variant
-
----
-
-#### animation.player.swim.legs.stationary
-- **Loop:** Yes
-- **Bones Affected:** `leftLeg`, `rightLeg`
-- **Properties:**
-  - `leftLeg` → rotation [0, -0.1, -0.1] (static)
-  - `rightLeg` → rotation [0, 0.1, 0.1] (static)
-- **Purpose:** No leg kick (standing still in water)
-
----
-
-#### animation.player.crawl
-- **Loop:** Yes | **Length:** 1.3s
-- **Bones Affected:** `leftArm`, `rightArm`, `root`
-- **Properties:**
-  - `leftArm` → rotation (4 keyframes — crawl stroke)
-  - `rightArm` → rotation (4 keyframes — crawl stroke)
-  - `root` → position (dynamic), rotation (horizontal)
-- **Purpose:** Crawling arm animation
-
----
-
-#### animation.player.crawl.no_right_arm
-- **Loop:** Yes | **Length:** 1.3s
-- **Bones Affected:** `leftArm`, `root`
-- **Properties:** Same as crawl but only left arm
-- **Purpose:** Crawling with only left arm
-
----
-
-#### animation.player.crawl.legs
-- **Loop:** Yes
-- **Bones Affected:** `leftLeg`, `rightLeg`
-- **Properties:**
-  - Both legs → rotation (crawl leg movement)
-- **Purpose:** Crawling leg animation
+| Animation | Bones | Purpose |
+|-----------|-------|---------|
+| `animation.player.attack.positions` | head | Resets head rotation during attack |
+| `animation.player.attack.rotations` | body, leftArm, rightArm | Main attack — swings arms during melee combat |
+| `animation.player.base_pose.upside_down` | waist | Flips player upside down (commands) |
+| `animation.player.bob` | leftArm, rightArm | Idle arm bobbing while walking |
+| `animation.player.bob.stationary` | leftArm, rightArm | Idle arm bobbing while standing still |
+| `animation.player.bow_equipped` | leftArm, rightArm, rightItem | Bow aiming pose — arms follow look direction |
+| `animation.player.cape` | cape | Cape physics/flap animation |
+| `animation.player.crossbow_equipped` | leftArm, rightArm | Crossbow aiming pose |
+| `animation.player.crossbow_hold` | leftArm, rightArm | Holding crossbow ready |
+| `animation.player.melee_spear_attack` | body, rightArm, rightItem | Spear thrust attack animation |
+| `animation.player.glide` | leftArm, rightArm, leftLeg, rightLeg | Elytra gliding pose — limbs spread |
+| `animation.player.holding` | leftArm, rightArm | Default holding items pose |
+| `animation.player.holding_heavy_core` | rightItem | Offset for heavy core item |
+| `animation.player.holding.zombie` | leftArm, rightArm | Zombie holding pose (arms forward) |
+| `animation.player.look_at_target.inverted` | head | Head tracking when upside down |
+| `animation.player.look_at_target.ui` | head | Head tracking in UI screens |
+| `animation.player.move.arms` | leftArm, rightArm | Arm swing while walking |
+| `animation.player.move.arms.single` | leftArm, rightArm | Single-arm swing variant |
+| `animation.player.move.arms.stationary` | leftArm, rightArm | No arm movement (standing still) |
+| `animation.player.move.arms.statue_of_liberty` | leftArm, rightArm | One arm raised pose |
+| `animation.player.move.arms.zombie` | leftArm, rightArm | Zombie arms forward pose |
+| `animation.player.move.legs` | leftLeg, rightLeg | Leg animation while walking |
+| `animation.player.move.legs.inverted` | leftLeg, rightLeg | Inverted walking (upside down) |
+| `animation.player.move.legs.single` | leftLeg, rightLeg | Single-leg walk variant |
+| `animation.player.move.legs.stationary` | leftLeg, rightLeg | No leg movement (standing still) |
+| `animation.player.riding.root` | root | Base position while riding |
+| `animation.player.riding.arms` | leftArm, rightArm | Arms resting while riding |
+| `animation.player.riding.arms.zombie` | leftArm, rightArm | Zombie arms while riding |
+| `animation.player.riding.legs` | leftLeg, rightLeg | Legs while riding |
+| `animation.player.shield_block_main_hand` | rightArm, rightItem | Shield blocking with main hand |
+| `animation.player.shield_block_off_hand` | leftArm, leftItem | Shield blocking with off hand |
+| `animation.player.sleeping` | head, root | Sleeping pose — player lies horizontal |
+| `animation.player.sneaking` | body, head, leftArm, rightArm, leftLeg, rightLeg, root | Sneaking/crouching — entire body lowered |
+| `animation.player.sneaking.inverted` | body, head, leftArm, rightArm, leftLeg, rightLeg, root | Sneaking while upside down |
+| `animation.player.swim` | leftArm, rightArm, root | Swimming arm stroke (1.3s loop) |
+| `animation.player.swim.no_right_arm` | leftArm, root | Swimming with only left arm |
+| `animation.player.swim.legs` | leftLeg, rightLeg | Swimming leg kick |
+| `animation.player.swim.legs.single` | leftLeg, rightLeg | Single-leg kick variant |
+| `animation.player.swim.legs.stationary` | leftLeg, rightLeg | No leg kick (standing still in water) |
+| `animation.player.crawl` | leftArm, rightArm, root | Crawling arm animation (1.3s loop) |
+| `animation.player.crawl.no_right_arm` | leftArm, root | Crawling with only left arm |
+| `animation.player.crawl.legs` | leftLeg, rightLeg | Crawling leg animation |
 
 ---
 
 ### humanoid.animation.json
 
----
-
-#### animation.humanoid.attack.rotations
-- **Loop:** Yes
-- **Bones Affected:** `body`, `leftArm`, `rightArm`
-- **Properties:**
-  - `body` → rotation (body twist)
-  - `leftArm` → rotation (arm swing)
-  - `rightArm` → rotation (attack swing)
-- **Purpose:** Shared attack animation for humanoids
-
----
-
-#### animation.humanoid.base_pose
-- **Loop:** Yes
-- **Bones Affected:** `waist`
-- **Properties:**
-  - `waist` → rotation [0, 0, 0] (static)
-- **Purpose:** Default waist rotation (neutral)
-
----
-
-#### animation.humanoid.big_head
-- **Loop:** Yes
-- **Bones Affected:** `head`
-- **Properties:**
-  - `head` → scale (dynamic)
-- **Purpose:** Enlarges head (for special effects)
-
----
-
-#### animation.humanoid.bob
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation (cosine wave)
-- **Purpose:** Shared idle arm bob
-
----
-
-#### animation.humanoid.bow_and_arrow
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation (bow pose)
-- **Purpose:** Shared bow aiming pose
-
----
-
-#### animation.humanoid.brandish_spear
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`
-- **Properties:**
-  - `rightArm` → rotation (spear raise)
-- **Purpose:** Spear brandish/throw pose
-
----
-
-#### animation.humanoid.holding_spyglass
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`
-- **Properties:**
-  - `rightArm` → rotation (spyglass hold + 5°)
-- **Purpose:** Holding spyglass up to eye
-
----
-
-#### animation.humanoid.tooting_goat_horn
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`, `rightItem`
-- **Properties:**
-  - `rightArm` → rotation (dynamic + 5°)
-  - `rightItem` → position [4, 0, 1], rotation [15, 0, 100] (static)
-- **Purpose:** Blowing goat horn
-
----
-
-#### animation.humanoid.holding_brush
-- **Loop:** Yes
-- **Bones Affected:** `rightItem`
-- **Properties:**
-  - `rightItem` → position (1 keyframe), rotation (1 keyframe)
-- **Purpose:** Brush item default position
-
----
-
-#### animation.humanoid.brushing
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`, `rightItem`
-- **Properties:**
-  - `rightArm` → rotation (dynamic + 5°)
-  - `rightItem` → position (6 keyframes), rotation (6 keyframes)
-- **Purpose:** Brushing animation (suspicious sand/gravel)
-
----
-
-#### animation.humanoid.celebrating
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - `leftArm` → rotation (dynamic + [180, -135])
-  - `rightArm` → rotation (dynamic + [180, 153])
-- **Purpose:** Victory celebration — arms raised
-
----
-
-#### animation.humanoid.charging
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`
-- **Properties:**
-  - `rightArm` → rotation (dynamic + 5°)
-- **Purpose:** Charging attack pose
-
----
-
-#### animation.humanoid.damage_nearby_mobs
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`, `leftLeg`, `rightLeg`
-- **Properties:**
-  - All four limbs → rotation (knockback)
-- **Purpose:** Iron golem smash animation
-
----
-
-#### animation.humanoid.holding
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation (dynamic + [0, 0])
-- **Purpose:** Default item holding pose
-
----
-
-#### animation.humanoid.look_at_target.default
-- **Loop:** Yes
-- **Bones Affected:** `head`
-- **Properties:**
-  - `head` → rotation (look-at + 0°)
-- **Purpose:** Default head tracking
-
----
-
-#### animation.humanoid.look_at_target.gliding
-- **Loop:** Yes
-- **Bones Affected:** `head`
-- **Properties:**
-  - `head` → rotation (look-at + [-45, 0])
-- **Purpose:** Head tracking while gliding
-
----
-
-#### animation.humanoid.look_at_target.swimming
-- **Loop:** Yes
-- **Bones Affected:** `head`
-- **Properties:**
-  - `head` → rotation (look-at + 0°)
-- **Purpose:** Head tracking while swimming
-
----
-
-#### animation.humanoid.move
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`, `leftLeg`, `rightLeg`
-- **Properties:**
-  - Arms → rotation (walk cycle)
-  - Legs → rotation (walk cycle, slight angle)
-- **Purpose:** Full body walk animation
-
----
-
-#### animation.humanoid.riding.body
-- **Loop:** Yes
-- **Bones Affected:** `body`
-- **Properties:**
-  - `body` → position (riding offset)
-- **Purpose:** Body position while riding
-
----
-
-#### animation.humanoid.riding.arms
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - Both arms → rotation [-36, 0, 0] (static)
-- **Purpose:** Arms while riding
-
----
-
-#### animation.humanoid.riding.legs
-- **Loop:** Yes
-- **Bones Affected:** `leftLeg`, `rightLeg`
-- **Properties:**
-  - Both legs → rotation (sitting)
-- **Purpose:** Legs while riding
-
----
-
-#### animation.humanoid.sneaking
-- **Loop:** Yes
-- **Bones Affected:** `body`, `head`, `leftArm`, `rightArm`, `leftLeg`, `rightLeg`
-- **Properties:**
-  - `body` → rotation (dynamic)
-  - `head` → position [0, 1, 0] (static, raised slightly)
-  - `leftArm` → rotation [72, 0, 0] (static, arms forward-down)
-  - `rightArm` → rotation [72, 0, 0] (static, arms forward-down)
-  - `leftLeg` → position [0, -3.1, 3.9] (static, bent forward)
-  - `rightLeg` → position [0, -2.9, 4.1] (static, bent forward)
-- **Purpose:** Humanoid sneak pose (different from player)
-
----
-
-#### animation.humanoid.swimming
-- **Loop:** Yes | **Length:** 1.3s
-- **Bones Affected:** `leftArm`, `rightArm`, `leftLeg`, `rightLeg`
-- **Properties:**
-  - Arms → rotation (3 keyframes — swim stroke)
-  - Legs → rotation (kick)
-- **Purpose:** Full body swimming animation
-
----
-
-#### animation.humanoid.use_item_progress
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`
-- **Properties:**
-  - `rightArm` → rotation (item use motion)
-- **Purpose:** Using/eating animation
-
----
-
-#### animation.humanoid.melee_spear_hold
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`, `rightItem`
-- **Properties:**
-  - `rightArm` → rotation (dynamic + 0°)
-  - `rightItem` → position [0, -1.5, -1.5] (static)
-- **Purpose:** Holding spear ready
-
----
-
-#### animation.humanoid.melee_spear_use
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`, `rightItem`
-- **Properties:**
-  - `rightArm` → rotation (thrust)
-  - `rightItem` → position [0, -1.5, -1.5], rotation (dynamic)
-- **Purpose:** Spear thrust attack
-
----
-
-#### animation.zombie.melee_spear_hold
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`, `rightItem`
-- **Properties:**
-  - Both arms → rotation (dynamic + 0°)
-  - `rightItem` → position [0, -1.5, -1.5] (static)
-- **Purpose:** Zombie spear hold
-
----
-
-#### animation.zombie.melee_spear_use
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`, `rightItem`
-- **Properties:**
-  - Both arms → rotation (dynamic)
-  - `rightItem` → position [0, -1.5, -1.5], rotation (dynamic)
-- **Purpose:** Zombie spear attack
+| Animation | Bones | Purpose |
+|-----------|-------|---------|
+| `animation.humanoid.attack.rotations` | body, leftArm, rightArm | Shared attack animation for humanoids |
+| `animation.humanoid.base_pose` | waist | Default waist rotation (neutral) |
+| `animation.humanoid.big_head` | head | Enlarges head (special effects) |
+| `animation.humanoid.bob` | leftArm, rightArm | Shared idle arm bob |
+| `animation.humanoid.bow_and_arrow` | leftArm, rightArm | Shared bow aiming pose |
+| `animation.humanoid.brandish_spear` | rightArm | Spear brandish/throw pose |
+| `animation.humanoid.holding_spyglass` | rightArm | Holding spyglass up to eye |
+| `animation.humanoid.tooting_goat_horn` | rightArm, rightItem | Blowing goat horn |
+| `animation.humanoid.holding_brush` | rightItem | Brush item default position |
+| `animation.humanoid.brushing` | rightArm, rightItem | Brushing animation (suspicious sand/gravel) |
+| `animation.humanoid.celebrating` | leftArm, rightArm | Victory celebration — arms raised |
+| `animation.humanoid.charging` | rightArm | Charging attack pose |
+| `animation.humanoid.damage_nearby_mobs` | leftArm, rightArm, leftLeg, rightLeg | Iron golem smash animation |
+| `animation.humanoid.holding` | leftArm, rightArm | Default item holding pose |
+| `animation.humanoid.look_at_target.default` | head | Default head tracking |
+| `animation.humanoid.look_at_target.gliding` | head | Head tracking while gliding |
+| `animation.humanoid.look_at_target.swimming` | head | Head tracking while swimming |
+| `animation.humanoid.move` | leftArm, rightArm, leftLeg, rightLeg | Full body walk animation |
+| `animation.humanoid.riding.body` | body | Body position while riding |
+| `animation.humanoid.riding.arms` | leftArm, rightArm | Arms while riding |
+| `animation.humanoid.riding.legs` | leftLeg, rightLeg | Legs while riding |
+| `animation.humanoid.sneaking` | body, head, leftArm, rightArm, leftLeg, rightLeg | Humanoid sneak pose |
+| `animation.humanoid.swimming` | leftArm, rightArm, leftLeg, rightLeg | Full body swimming (1.3s loop) |
+| `animation.humanoid.use_item_progress` | rightArm | Using/eating animation |
+| `animation.humanoid.melee_spear_hold` | rightArm, rightItem | Holding spear ready |
+| `animation.humanoid.melee_spear_use` | rightArm, rightItem | Spear thrust attack |
+| `animation.zombie.melee_spear_hold` | leftArm, rightArm, rightItem | Zombie spear hold |
+| `animation.zombie.melee_spear_use` | leftArm, rightArm, rightItem | Zombie spear attack |
 
 ---
 
 ### player_firstperson.animation.json
 
----
-
-#### animation.player.first_person.attack_rotation
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`
-- **Properties:**
-  - `rightArm` → position, rotation (dynamic)
-- **Purpose:** First-person attack swing
-
----
-
-#### animation.player.first_person.attack_rotation_item
-- **Loop:** Yes
-- **Bones Affected:** `rightItem`
-- **Properties:**
-  - `rightItem` → position, rotation (dynamic)
-- **Purpose:** First-person item attack
-
----
-
-#### animation.player.first_person.base_pose
-- **Loop:** Yes
-- **Bones Affected:** `body`, `head`
-- **Properties:**
-  - `body` → rotation
-  - `head` → rotation
-- **Purpose:** First-person base camera pose
-
----
-
-#### animation.player.first_person.crossbow_equipped
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightItem`
-- **Properties:**
-  - `leftArm` → position, rotation, scale
-  - `rightItem` → position, rotation, scale
-- **Purpose:** First-person crossbow aiming
-
----
-
-#### animation.player.first_person.crossbow_hold
-- **Loop:** Yes
-- **Bones Affected:** `rightItem`
-- **Properties:**
-  - `rightItem` → position
-- **Purpose:** First-person crossbow hold
-
----
-
-#### animation.player.first_person.melee_spear_hold
-- **Loop:** Yes
-- **Bones Affected:** `rightItem`
-- **Properties:**
-  - `rightItem` → position, rotation
-- **Purpose:** First-person spear hold
-
----
-
-#### animation.player.first_person.melee_spear_use
-- **Loop:** Yes
-- **Bones Affected:** `rightItem`
-- **Properties:**
-  - `rightItem` → position, rotation
-- **Purpose:** First-person spear use
-
----
-
-#### animation.player.first_person.melee_spear_attack
-- **Loop:** Yes
-- **Bones Affected:** `rightItem`
-- **Properties:**
-  - `rightItem` → position, rotation
-- **Purpose:** First-person spear attack
-
----
-
-#### animation.player.first_person.breathing_bob
-- **Loop:** Yes
-- **Bones Affected:** `rightItem`
-- **Properties:**
-  - `rightItem` → position
-- **Purpose:** Idle item bob
-
----
-
-#### animation.player.first_person.empty_hand
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`, `rightItem`, `leftItem`
-- **Properties:**
-  - `rightArm` → position, rotation
-  - `rightItem` → position
-  - `leftItem` → position
-- **Purpose:** Empty hand first-person pose
-
----
-
-#### animation.player.first_person.map_hold
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - `leftArm` → position, rotation, scale
-  - `rightArm` → position, rotation
-- **Purpose:** Holding map with both hands
-
----
-
-#### animation.player.first_person.map_hold_attack
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - `leftArm` → position, rotation
-  - `rightArm` → position, rotation
-- **Purpose:** Using map item
-
----
-
-#### animation.player.first_person.map_hold_main_hand
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`
-- **Properties:**
-  - `rightArm` → position, rotation, scale
-- **Purpose:** Map in main hand
-
----
-
-#### animation.player.first_person.map_hold_off_hand
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`
-- **Properties:**
-  - `leftArm` → position, rotation, scale
-- **Purpose:** Map in off hand
-
----
-
-#### animation.player.first_person.swap_item
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - `leftArm` → position
-  - `rightArm` → position
-- **Purpose:** Item swap animation
-
----
-
-#### animation.player.first_person.shield_block
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - `leftArm` → position
-  - `rightArm` → position
-- **Purpose:** First-person shield block
-
----
-
-#### animation.player.first_person.vr_attack_rotation
-- **Loop:** Yes
-- **Bones Affected:** `rightArm`
-- **Properties:**
-  - `rightArm` → position, rotation
-- **Purpose:** VR attack swing
-
----
-
-#### animation.player.first_person.walk
-- **Loop:** Yes
-- **Bones Affected:** `leftArm`, `rightArm`
-- **Properties:**
-  - `leftArm` → position
-  - `rightArm` → position
-- **Purpose:** First-person walk bob
+| Animation | Bones | Purpose |
+|-----------|-------|---------|
+| `animation.player.first_person.attack_rotation` | rightArm | First-person attack swing |
+| `animation.player.first_person.attack_rotation_item` | rightItem | First-person item attack |
+| `animation.player.first_person.base_pose` | body, head | First-person base camera pose |
+| `animation.player.first_person.crossbow_equipped` | leftArm, rightItem | First-person crossbow aiming |
+| `animation.player.first_person.crossbow_hold` | rightItem | First-person crossbow hold |
+| `animation.player.first_person.melee_spear_hold` | rightItem | First-person spear hold |
+| `animation.player.first_person.melee_spear_use` | rightItem | First-person spear use |
+| `animation.player.first_person.melee_spear_attack` | rightItem | First-person spear attack |
+| `animation.player.first_person.breathing_bob` | rightItem | Idle item bob |
+| `animation.player.first_person.empty_hand` | rightArm, rightItem, leftItem | Empty hand first-person pose |
+| `animation.player.first_person.map_hold` | leftArm, rightArm | Holding map with both hands |
+| `animation.player.first_person.map_hold_attack` | leftArm, rightArm | Using map item |
+| `animation.player.first_person.map_hold_main_hand` | rightArm | Map in main hand |
+| `animation.player.first_person.map_hold_off_hand` | leftArm | Map in off hand |
+| `animation.player.first_person.swap_item` | leftArm, rightArm | Item swap animation |
+| `animation.player.first_person.shield_block` | leftArm, rightArm | First-person shield block |
+| `animation.player.first_person.vr_attack_rotation` | rightArm | VR attack swing |
+| `animation.player.first_person.walk` | leftArm, rightArm | First-person walk bob |
 
 ---
 
 ### look_at_target.animation.json
 
----
-
-#### animation.common.look_at_target
-- **Loop:** Yes
-- **Bones Affected:** `head`
-- **Properties:**
-  - `head` → rotation (dynamic)
-- **Purpose:** Generic head look-at target
+| Animation | Bones | Purpose |
+|-----------|-------|---------|
+| `animation.common.look_at_target` | head | Generic head look-at target |
 
 ---
 
 ### elytra.animation.json
 
----
-
-#### animation.elytra.default
-- **Loop:** Yes
-- **Bones Affected:** `body`
-- **Properties:**
-  - `body` → scale (static)
-- **Purpose:** Elytra default scale
-
----
-
-#### animation.elytra.gliding
-- **Loop:** Yes
-- **Bones Affected:** `body`
-- **Properties:**
-  - `body` → scale (static)
-- **Purpose:** Elytra gliding scale
-
----
-
-#### animation.elytra.sneaking
-- **Loop:** Yes
-- **Bones Affected:** `body`
-- **Properties:**
-  - `body` → scale (static)
-- **Purpose:** Elytra sneaking scale
-
----
-
-#### animation.elytra.sleeping
-- **Loop:** Yes
-- **Bones Affected:** `body`
-- **Properties:**
-  - `body` → scale (static)
-- **Purpose:** Elytra sleeping scale
-
----
-
-#### animation.elytra.swimming
-- **Loop:** Yes
-- **Bones Affected:** `body`
-- **Properties:**
-  - `body` → scale (static)
-- **Purpose:** Elytra swimming scale
+| Animation | Bones | Purpose |
+|-----------|-------|---------|
+| `animation.elytra.default` | body | Elytra default scale |
+| `animation.elytra.gliding` | body | Elytra gliding scale |
+| `animation.elytra.sneaking` | body | Elytra sneaking scale |
+| `animation.elytra.sleeping` | body | Elytra sleeping scale |
+| `animation.elytra.swimming` | body | Elytra swimming scale |
 
 ---
 
